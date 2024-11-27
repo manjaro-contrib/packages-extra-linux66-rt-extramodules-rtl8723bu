@@ -5,7 +5,6 @@
 # Contributor: Filip <fila pruda com>, Det < nimetonmaili(at)gmail >
 
 _linuxprefix=linux66-rt
-_extramodules=extramodules-6.6-rt-MANJARO
 
 _module=rtl8723bu
 pkgname="${_linuxprefix}-${_module}"
@@ -18,7 +17,6 @@ license=('GPL')
 groups=("${_linuxprefix}-extramodules")
 depends=("${_linuxprefix}")
 makedepends=('git' "${_linuxprefix}-headers")
-replaces=("linux515-rt-${_module}" "linux60-rt-${_module}")
 _commit=af3a408d6399655b0db23c2c8720436ca725ca47  # master
 source=("git+https://github.com/lwfinger/rtl8723bu.git#commit=${_commit}"
         'blacklist-rtl8xxxu.conf')
@@ -38,7 +36,7 @@ prepare() {
 }
 
 build() {
-    _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
+    _kernver="$(cat /usr/src/${_linuxprefix}/version)"
 
      cd "${_module}"
 
@@ -49,7 +47,7 @@ build() {
 }
 
 package() {
-    _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
+    _kernver="$(cat /usr/src/${_linuxprefix}/version)"
 
     install -Dm644 "blacklist-rtl8xxxu.conf" "${pkgdir}/usr/lib/modprobe.d/${_linuxprefix}-blacklist-rtl8xxxu.conf"
     install -Dm644 "${_module}"/*.ko -t "$pkgdir/usr/lib/modules/${_kernver}/extramodules/"
