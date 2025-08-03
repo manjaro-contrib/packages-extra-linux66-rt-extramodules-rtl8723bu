@@ -12,14 +12,14 @@ pkgver=20250607
 pkgrel=1
 pkgdesc="Driver for RTL8723BU"
 arch=('x86_64')
-url="https://github.com/lwfinger/rtl8723bu"
+url="https://github.com/dini/rtl8723bu"
 license=('GPL')
 groups=("${_linuxprefix}-extramodules")
 depends=("${_linuxprefix}")
 makedepends=('git' "${_linuxprefix}-headers")
 provides=("${_module}")
 _commit=8e13c4675c91f67404cdb18488c864ec7b54a985  # master
-source=("git+https://github.com/lwfinger/rtl8723bu.git#commit=${_commit}"
+source=("git+https://github.com/dini/rtl8723bu.git#commit=${_commit}"
         'blacklist-rtl8xxxu.conf')
 sha256sums=('b1bdcede5d15c75366107129c2daae8d699afbe28042f228b19f5f081c8aeca2'
             '7c726ad04083c8e620bc11c837e5f51d3e9e2a5c3e19c333b2968eb39f1ef07e')
