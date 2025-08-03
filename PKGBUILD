@@ -8,8 +8,8 @@ _linuxprefix=linux66-rt
 
 _module=rtl8723bu
 pkgname="${_linuxprefix}-${_module}"
-pkgver=20240303
-pkgrel=36
+pkgver=20250607
+pkgrel=1
 pkgdesc="Driver for RTL8723BU"
 arch=('x86_64')
 url="https://github.com/lwfinger/rtl8723bu"
@@ -18,10 +18,10 @@ groups=("${_linuxprefix}-extramodules")
 depends=("${_linuxprefix}")
 makedepends=('git' "${_linuxprefix}-headers")
 provides=("${_module}")
-_commit=af3a408d6399655b0db23c2c8720436ca725ca47  # master
+_commit=8e13c4675c91f67404cdb18488c864ec7b54a985  # master
 source=("git+https://github.com/lwfinger/rtl8723bu.git#commit=${_commit}"
         'blacklist-rtl8xxxu.conf')
-sha256sums=('a9ff148d393079de8618db758905d42e48f098e6c7ebd5b12518f4e4a1117da2'
+sha256sums=('b1bdcede5d15c75366107129c2daae8d699afbe28042f228b19f5f081c8aeca2'
             '7c726ad04083c8e620bc11c837e5f51d3e9e2a5c3e19c333b2968eb39f1ef07e')
 
 pkgver() {
