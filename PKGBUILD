@@ -8,7 +8,7 @@ _linuxprefix=linux66-rt
 
 _module=rtl8723bu
 pkgname="${_linuxprefix}-${_module}"
-pkgver=20250607
+pkgver=20250811
 pkgrel=1
 pkgdesc="Driver for RTL8723BU"
 arch=('x86_64')
@@ -18,10 +18,10 @@ groups=("${_linuxprefix}-extramodules")
 depends=("${_linuxprefix}")
 makedepends=('git' "${_linuxprefix}-headers")
 provides=("${_module}")
-_commit=8e13c4675c91f67404cdb18488c864ec7b54a985  # master
+_commit=5938823ddb3280cdb4372ab80c2131c1b0e27dcb  # master
 source=("git+https://github.com/dini/rtl8723bu.git#commit=${_commit}"
         'blacklist-rtl8xxxu.conf')
-sha256sums=('b1bdcede5d15c75366107129c2daae8d699afbe28042f228b19f5f081c8aeca2'
+sha256sums=('d395040a95ed922713b2a9b3137f5aaaea816999e10188357b0247256b919217'
             '7c726ad04083c8e620bc11c837e5f51d3e9e2a5c3e19c333b2968eb39f1ef07e')
 
 pkgver() {
@@ -33,7 +33,7 @@ prepare() {
     cd "${_module}"
 
     # do not compile with CONCURRENT_MODE
-    sed -i 's/EXTRA_CFLAGS += -DCONFIG_CONCURRENT_MODE/#EXTRA_CFLAGS += -DCONFIG_CONCURRENT_MODE/g' Makefile
+    sed -i 's/ccflags-y += -DCONFIG_CONCURRENT_MODE/#ccflags-y += -DCONFIG_CONCURRENT_MODE/g' Makefile
 }
 
 build() {
